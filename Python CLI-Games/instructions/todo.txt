@@ -1,0 +1,26 @@
+Proof
+update to use action/info blocks
+
+
+DONE Install python 3
+  - what super power are they getting?
+  - Intro to Terminal
+  - info on 2 vs. 3
+  - `brew install python3`
+
+DONE Game 1 Bear Ninja Cowboy
+  - what is a computer language?
+  - objectives - CLI input, control flow, create a random number, printing
+  - comments
+  - print input
+  - introduce randomness, setup coin toss control flow
+  - add control flow for logic
+  - break up into functions
+
+DONE Game 2 - Flash Card Quiz
+  - what are the differences of python and other languages?
+  - read and parse json from file system
+  - loop over dictionary
+  - access elements in dictionary
+
+DONE Game 3 - ASCII-Art
