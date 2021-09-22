@@ -13,7 +13,7 @@ if font == "random":
   data = requests.get('http://artii.herokuapp.com/fonts_list')
   fontsArray = data.text.split('\n')
 
-  for i in range(3):
+  for i in range(2):
       font = random.choice(fontsArray)
       getAsciiArt(text, font)
 
