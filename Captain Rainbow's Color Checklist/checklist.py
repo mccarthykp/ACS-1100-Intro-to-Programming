@@ -87,12 +87,6 @@ while running:
     running = select(selection)
     
 
-
-
-
-
-
-
 # def test():
 #     create("orange shirt")
 #     create("red cloak")
