@@ -1,0 +1,61 @@
+FUNCTION load_word
+    SET f equal to OPEN(file, readlines)
+    SET words_list equal to f.readlines
+    f.close
+
+    words_list equal to words_list[0].split(' ')
+    SET secret_word equal to random.choice(words_list)
+    RETURN secret_word
+
+FUNCTION is_word_guessed(INPUTS current_word)
+    FOR letter IN current_word
+        IF letter is equal to '_' THEN
+            RETURN False
+        ENDIF
+    ENDLOOP
+    RETURN True
+
+FUNCTION get_guessed_word(INPUTS secret_word, letters_guessed)
+    SET guessed_word equal to ' '
+
+    FOR letter IN secret_word
+        IF letter IN letters_guessed THEN
+            SAVE guessed_word as letter
+        ELSE    
+            SAVE guessed_word as '_'
+        ENDIF
+    ENDLOOP
+    RETURN guessed_word
+
+FUNCTION is_guess_in_word(INPUTS guess, secret_word)
+    SET num_guesses equal to 7
+
+    IF guess.lower() IN secret_word OR guess.upper() IN secret_word THEN
+        RETURN True
+    ELSE
+        STORE num_guesses as num_guesses SUBTRACT 1
+    ENDIF
+
+FUNCTION spaceman(INPUTS secret_word)
+    SET player_input equal to PROMPT for letter
+
+    IF is_guess_in_word(player_input, secret_word)
+        letters_guessed.append(player_input)
+        DISPLAY 'Nice! You've guessed a letter correctly.'
+    ELSE
+        DISPLAY 'Guess is not in the secret word. Try again.'
+    ENDIF
+
+    SET current_guessed_word equal to get_guessed_word(secret_word, letters_guessed)
+    DISPLAY current_guessed_word
+    RETURN current_guessed_word
+
+SET secret_word equal to load_word()
+
+DOWHILE running
+    DISPLAY 'Welcome to Spaceman! A word has been chosen . . . To find this word, guess its letters!'
+
+    IF is_word_guessed(spaceman(secret_word)) THEN
+        SAVE running equal as False
+    ENDIF
+ENDDO
